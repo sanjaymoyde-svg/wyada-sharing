@@ -18,8 +18,10 @@ export interface BlogPost {
   category: string;
   image: string;
   body_html?: string;
+  summary_html?: string;
   author?: string;
   published_at?: string;
+  blog_title?: string;
 }
 
 export type ProductMode = 'hydration' | 'protection' | 'balance' | 'wash' | 'mask';

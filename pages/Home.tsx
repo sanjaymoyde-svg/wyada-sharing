@@ -64,7 +64,7 @@ export const Home: React.FC<HomeProps> = ({
     const navigate = useNavigate();
     const location = useLocation();
 
-    const isArticleOpen = false;
+    const [isArticleOpen, setIsArticleOpen] = useState(false);
     const [hideLogo, setHideLogo] = useState(false);
 
     const {
@@ -239,7 +239,7 @@ export const Home: React.FC<HomeProps> = ({
                 />
                 <ComingSoonCarousel isNight={isNight} />
                 <CircleIntro setLogoHidden={setHideLogo} />
-                <BigPictureCarousel isNight={isNight} />
+                <BigPictureCarousel isNight={isNight} onArticleOpenChange={setIsArticleOpen} />
             </main>
 
             <FloatingBar
