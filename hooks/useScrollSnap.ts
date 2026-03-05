@@ -8,7 +8,7 @@ interface UseScrollSnapProps {
     isArticleOpen: boolean;
 }
 
-const MANIFESTO_SCREENS = 7;
+const MANIFESTO_SCREENS = 5;
 const TOTAL_ORIGIN_STEPS = 5;
 const VIEWPORT_DELTA_EPSILON_PX = 1;
 const VIEWPORT_REALIGN_EPSILON_PX = 1;
@@ -73,12 +73,12 @@ export const useScrollSnap = ({ isMenuOpen, isCartOpen, isArticleOpen }: UseScro
     }, [clearAutoScrollTimer, getVh, isArticleOpen, isCartOpen, isMenuOpen, setSnapLocked, unlockSnap]);
 
     const getElementAtScroll = useCallback((screenIndex: number): HomeElement => {
-        if (screenIndex >= 11.8) return 'bigpicture';
-        if (screenIndex >= 10.8) return 'circle';
-        if (screenIndex >= 9.8) return 'future';
-        if (screenIndex >= 8.8) return 'water';
-        if (screenIndex >= 7.8) return 'earth';
-        if (screenIndex >= 6.8) return 'elements';
+        if (screenIndex >= 9.8) return 'bigpicture';
+        if (screenIndex >= 8.8) return 'circle';
+        if (screenIndex >= 7.8) return 'future';
+        if (screenIndex >= 6.8) return 'water';
+        if (screenIndex >= 5.8) return 'earth';
+        if (screenIndex >= 4.8) return 'elements';
         return 'origin';
     }, []);
 

@@ -47,18 +47,17 @@ export const SECTION_CONFIG: Record<HomeElement, { color: string; path: string }
   bigpicture: { color: '#dcdcdc', path: '/bigpicture' }
 };
 
-export const SNAP_STEPS = [0, 1, 2, 3, 4, 7, 8, 9, 10, 11, 12] as const;
-
+export const SNAP_STEPS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
 export const SNAP_ELEMENT_MAP: Record<(typeof SNAP_STEPS)[number], HomeElement> = {
   0: 'origin',
   1: 'origin',
   2: 'origin',
   3: 'origin',
   4: 'origin',
-  7: 'elements',
-  8: 'earth',
-  9: 'water',
-  10: 'future',
-  11: 'circle',
-  12: 'bigpicture'
+  5: 'elements',
+  6: 'earth',
+  7: 'water',
+  8: 'future',
+  9: 'circle',
+  10: 'bigpicture'
 };

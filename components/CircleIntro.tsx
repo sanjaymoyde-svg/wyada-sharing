@@ -25,9 +25,9 @@ export const CircleIntro: React.FC<CircleIntroProps> = ({ setLogoHidden }) => {
 
     // --- SCROLL LOGIC ---
     // Peak at 11.1vh (arrival from Future).
-    const scrollStart = vh * 10.8;
-    const scrollPeak = vh * 11.1;
-    const scrollEnd = vh * 11.4;
+    const scrollStart = vh * 8.8;
+    const scrollPeak = vh * 9.1;
+    const scrollEnd = vh * 9.4;
 
     const scrollRange = [scrollStart, scrollPeak, scrollEnd];
 

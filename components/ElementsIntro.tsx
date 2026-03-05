@@ -34,10 +34,10 @@ export const ElementsIntro: React.FC<ElementsIntroProps> = ({ setLogoHidden, pro
 
 
     // --- SCROLL LOGIC ---
-    // Peak at 7.1vh (Arrival at Elements Intro)
-    const scrollStart = vh * 6.8;
-    const scrollPeak = vh * 7.1;
-    const scrollEnd = vh * 7.4;
+    // Peak at 5.1vh (Arrival at Elements Intro)
+    const scrollStart = vh * 4.8;
+    const scrollPeak = vh * 5.1;
+    const scrollEnd = vh * 5.4;
 
     const scrollRange = [scrollStart, scrollPeak, scrollEnd];
 

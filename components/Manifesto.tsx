@@ -7,12 +7,12 @@ interface ManifestoProps {
 }
 
 const CONFIG = {
-    screens: 7,
-    scrollIndexMax: 7,
+    screens: 5,
+    scrollIndexMax: 5,
     lineRanges: {
-        pollution: [0.08, 0.28] as [number, number],
-        blueLight: [0.25, 0.45] as [number, number],
-        stress: [0.42, 0.62] as [number, number],
+        pollution: [0.11, 0.39] as [number, number],
+        blueLight: [0.35, 0.63] as [number, number],
+        stress: [0.59, 0.87] as [number, number],
     },
 };
 
@@ -329,15 +329,15 @@ export const Manifesto: React.FC<ManifestoProps> = ({ isNight }) => {
         restDelta: 0.001,
     });
 
-    const heroOpacity = useTransform(smoothProgress, [0.0, 0.05, 0.12], [1, 1, 0]);
-    const heroY = useTransform(smoothProgress, [0.0, 0.16], [0, -220]);
+    const heroOpacity = useTransform(smoothProgress, [0.0, 0.07, 0.17], [1, 1, 0]);
+    const heroY = useTransform(smoothProgress, [0.0, 0.22], [0, -220]);
 
-    const outroOpacity = useTransform(smoothProgress, [0.58, 0.66, 1.0], [0, 1, 1]);
-    const outroY = useTransform(smoothProgress, [0.58, 0.66], [40, 0]);
+    const outroOpacity = useTransform(smoothProgress, [0.81, 0.92, 1.0], [0, 1, 1]);
+    const outroY = useTransform(smoothProgress, [0.81, 0.92], [40, 0]);
 
-    const scrollPromptOpacity = useTransform(smoothProgress, [0.0, 0.80, 0.88], [1, 1, 0]);
-    const scrollPromptY = useTransform(smoothProgress, [0.0, 0.80, 0.88], [0, 0, -50]);
-    const elementsPromptOpacity = useTransform(smoothProgress, [0.90, 0.96, 1.0], [0, 1, 1]);
+    const scrollPromptOpacity = useTransform(smoothProgress, [0.0, 0.80, 0.90], [1, 1, 0]);
+    const scrollPromptY = useTransform(smoothProgress, [0.0, 0.80, 0.90], [0, 0, -50]);
+    const elementsPromptOpacity = useTransform(smoothProgress, [0.93, 0.97, 1.0], [0, 1, 1]);
 
     useEffect(() => {
         let isNavigating = false;

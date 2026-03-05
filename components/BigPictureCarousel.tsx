@@ -159,7 +159,7 @@ export const BigPictureCarousel: React.FC<BigPictureCarouselProps> = ({ isNight,
   }, [selectedArticle]);
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const threshold = 50;
+    const threshold = isMobile ? 30 : 50;
     if (info.offset.x < -threshold) {
       setIndex((prev) => Math.min(prev + 1, totalSlides - 1));
     } else if (info.offset.x > threshold) {
@@ -219,14 +219,14 @@ export const BigPictureCarousel: React.FC<BigPictureCarouselProps> = ({ isNight,
                 drag="x"
                 dragDirectionLock={true}
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
+                dragElastic={isMobile ? 0.6 : 0.2}
                 onDragEnd={handleDragEnd}
                 animate={{
                   x: `${isMobile
                     ? -(Math.min(index, totalSlides - 1) * 85)
                     : -(Math.min(index, totalSlides - 2) * 38)}vw`
                 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                transition={{ type: "spring", stiffness: 300, damping: isMobile ? 35 : 30 }}
                 style={{ touchAction: "pan-y" }}
               >
                 {posts.map((post) => (
@@ -280,7 +280,7 @@ export const BigPictureCarousel: React.FC<BigPictureCarouselProps> = ({ isNight,
             </div>
 
             {/* Vertical Divider / Shadow Overlay - Simulating 'coming from right' panel */}
-            <div className="hidden md:block absolute right-0 top-0 h-full w-[2px] bg-black/30 z-40" style={{ boxShadow: '-15px 0 30px rgba(0,0,0,0.3)' }}></div>
+            <div className="hidden md:block absolute right-0 top-14 h-[38vh] w-[2px] bg-black/30 z-40" style={{ boxShadow: '-15px 0 30px rgba(0,0,0,0.3)' }}></div>
           </div>
 
           {/* COMMUNITY STORIES Label - Mobile Only - Above Menu */}

@@ -71,12 +71,12 @@ const IndicatorItem = memo(({
 
         let screenIndex = 0;
         if (el.id === 'origin') screenIndex = 0;
-        else if (el.id === 'elements') screenIndex = 7.0;
-        else if (el.id === 'earth') screenIndex = 8.0;
-        else if (el.id === 'water') screenIndex = 9.0;
-        else if (el.id === 'future') screenIndex = 10.0;
-        else if (el.id === 'circle') screenIndex = 11.0;
-        else if (el.id === 'bigpicture') screenIndex = 12.0;
+        else if (el.id === 'elements') screenIndex = 5.0;
+        else if (el.id === 'earth') screenIndex = 6.0;
+        else if (el.id === 'water') screenIndex = 7.0;
+        else if (el.id === 'future') screenIndex = 8.0;
+        else if (el.id === 'circle') screenIndex = 9.0;
+        else if (el.id === 'bigpicture') screenIndex = 10.0;
 
         onNavigate(screenIndex);
     };
