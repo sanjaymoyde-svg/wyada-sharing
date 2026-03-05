@@ -339,6 +339,51 @@ export const Manifesto: React.FC<ManifestoProps> = ({ isNight }) => {
     const scrollPromptY = useTransform(smoothProgress, [0.0, 0.80, 0.88], [0, 0, -50]);
     const elementsPromptOpacity = useTransform(smoothProgress, [0.90, 0.96, 1.0], [0, 1, 1]);
 
+    useEffect(() => {
+        let isNavigating = false;
+        let lastWheelTime = 0;
+        let scrollAccumulator = 0;
+
+        const handleWheel = (e: WheelEvent) => {
+            const container = containerRef.current;
+            if (!container) return;
+
+            const rect = container.getBoundingClientRect();
+            if (rect.top <= 10 && rect.bottom >= window.innerHeight - 10) {
+                if (isNavigating) {
+                    e.preventDefault();
+                    return;
+                }
+
+                const now = Date.now();
+                if (now - lastWheelTime > 150) {
+                    scrollAccumulator = 0;
+                }
+                lastWheelTime = now;
+                scrollAccumulator += e.deltaY;
+
+                if (scrollAccumulator > 600 && rect.bottom > window.innerHeight + 10) {
+                    e.preventDefault();
+                    isNavigating = true;
+                    window.scrollTo({ top: window.scrollY + rect.bottom - window.innerHeight, behavior: 'smooth' });
+                    setTimeout(() => { isNavigating = false; scrollAccumulator = 0; }, 800);
+                } else if (scrollAccumulator < -600 && rect.top < -10) {
+                    e.preventDefault();
+                    isNavigating = true;
+                    window.scrollTo({ top: window.scrollY + rect.top, behavior: 'smooth' });
+                    setTimeout(() => { isNavigating = false; scrollAccumulator = 0; }, 800);
+                }
+            }
+        };
+
+        const wheelOptions = { passive: false } as const;
+        window.addEventListener('wheel', handleWheel, wheelOptions);
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, []);
+
     return (
         <section
             id="manifesto-section"
@@ -348,7 +393,7 @@ export const Manifesto: React.FC<ManifestoProps> = ({ isNight }) => {
         >
             <div className="absolute inset-0 pointer-events-none z-0 flex flex-col">
                 {Array.from({ length: CONFIG.screens }).map((_, i) => (
-                    <div key={i} className={i === CONFIG.screens - 1 ? '' : 'snap-start snap-always'} style={{ height: 'var(--app-vh)' }} />
+                    <div key={i} className={i === CONFIG.screens - 1 ? '' : 'snap-start'} style={{ height: 'var(--app-vh)' }} />
                 ))}
             </div>
 
