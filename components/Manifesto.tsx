@@ -362,12 +362,12 @@ export const Manifesto: React.FC<ManifestoProps> = ({ isNight }) => {
                 lastWheelTime = now;
                 scrollAccumulator += e.deltaY;
 
-                if (scrollAccumulator > 600 && rect.bottom > window.innerHeight + 10) {
+                if (scrollAccumulator > 650 && rect.bottom > window.innerHeight + 10) {
                     e.preventDefault();
                     isNavigating = true;
                     window.scrollTo({ top: window.scrollY + rect.bottom - window.innerHeight, behavior: 'smooth' });
                     setTimeout(() => { isNavigating = false; scrollAccumulator = 0; }, 800);
-                } else if (scrollAccumulator < -600 && rect.top < -10) {
+                } else if (scrollAccumulator < -650 && rect.top < -10) {
                     e.preventDefault();
                     isNavigating = true;
                     window.scrollTo({ top: window.scrollY + rect.top, behavior: 'smooth' });
